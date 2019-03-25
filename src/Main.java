@@ -10,7 +10,6 @@ public class Main {
         int upper;
         BoundedInteger bi1 = null;
         BoundedInteger bi2 = null;
-        BoundedInteger bi3 = null;
         BufferedReader br;
 
 
@@ -32,15 +31,12 @@ public class Main {
             if (strategy.equals("Cap")) {
                 bi1 = new CapBoundedInteger((upper + lower) / 2, lower, upper);
                 bi2 = new CapBoundedInteger((upper + lower) / 2, lower, upper);
-                bi3 = new CapBoundedInteger((upper + lower) / 2, lower, upper);
             } else if (strategy.equals("Wrap")) {
                 bi1 = new WrappedBoundedInteger((upper + lower) / 2, lower, upper);
                 bi2 = new WrappedBoundedInteger((upper + lower) / 2, lower, upper);
-                bi3 = new WrappedBoundedInteger((upper + lower) / 2, lower, upper);
             } else if (strategy.equals("Exception")) {
                 bi1 = new ExceptionBoundedInteger((upper + lower) / 2, lower, upper);
                 bi2 = new ExceptionBoundedInteger((upper + lower) / 2, lower, upper);
-                bi3 = new ExceptionBoundedInteger((upper + lower) / 2, lower, upper);
             }
             if (bi1 != null)
                 fileWriter.write(bi1.getValue() + "\n");
@@ -49,8 +45,8 @@ public class Main {
             while ((line = br.readLine()) != null) {
                 bi2.setValue(Integer.parseInt(line));
                 fileWriter.write(bi2.getValue() + " ");
-                bi3.setValue(Integer.parseInt(line)+ bi1.getValue());
-                fileWriter.write(bi3.getValue()+"\n");
+                bi1.addWith(Integer.parseInt(line));
+                fileWriter.write(bi1.getValue()+"\n");
             }
             fileWriter.close();
             br.close();
