@@ -1,0 +1,15 @@
+
+5	ExceptionStrategy
+5	WrapStrategy
+5	CapStrategy
+
+10 	StrategyPattern
+
+10	File I/O
+
+Demonstrations:
+	5 contructor
+	5 setValue
+	5 addWith
+
+50/50
